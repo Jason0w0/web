@@ -1,7 +1,7 @@
 package main
 
 import (
-	"web/config"
+	"github.com/Jason0w0/web/web/config"
 
 	"github.com/gofiber/fiber/v2"
 	_ "github.com/mattn/go-sqlite3"

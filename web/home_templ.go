@@ -331,7 +331,7 @@ func LandingContent(email string, session string) templ.Component {
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(email)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `home.templ`, Line: 89, Col: 18}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `home.templ`, Line: 99, Col: 18}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
@@ -344,54 +344,13 @@ func LandingContent(email string, session string) templ.Component {
 		var templ_7745c5c3_Var14 string
 		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf(`{"session": "%v"}`, session))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `home.templ`, Line: 97, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `home.templ`, Line: 107, Col: 56}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-include=\"[name=&#39;email&#39;]\" hx-target=\"body\">Confirm</button></div></div></div>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		return templ_7745c5c3_Err
-	})
-}
-
-func LandingBase() templ.Component {
-	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
-		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
-		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
-			return templ_7745c5c3_CtxErr
-		}
-		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
-		if !templ_7745c5c3_IsBuffer {
-			defer func() {
-				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err == nil {
-					templ_7745c5c3_Err = templ_7745c5c3_BufErr
-				}
-			}()
-		}
-		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var15 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var15 == nil {
-			templ_7745c5c3_Var15 = templ.NopComponent
-		}
-		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"w-full h-screen flex flex-col\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = NavigationBar().Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templ_7745c5c3_Var15.Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -415,9 +374,9 @@ func ProductContent() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var16 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var16 == nil {
-			templ_7745c5c3_Var16 = templ.NopComponent
+		templ_7745c5c3_Var15 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var15 == nil {
+			templ_7745c5c3_Var15 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"product\" class=\"w-full h-96 flex flex-row\"><div class=\"h-full w-2/5 p-4 flex flex-col justify-center\"><div><span class=\"text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text\">PAM Solution</span></div><p class=\"pr-4 pt-4 text-lg text-white\">PAM Solution is a PAM Solution that helps businesses gain full control over privileged accounts, enforce the principle of least privilege and zero trust model, ensuring that sensitive data and systems are protected while maintaining compliance with relevant security regulations.</p></div><div class=\"h-full flex flex-row-reverse items-center p-4 w-3/5\"><iframe width=\"80%\" height=\"83.333333%\" src=\"https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div></div><div class=\"w-full h-96 flex flex-row-reverse\"><div class=\"h-full w-2/5 p-4 flex flex-col justify-center \"><div><span class=\"text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text\">Features</span></div><ul class=\"list-disc p-4 text-white text-lg\"><li class=\"text-indigo-400\"><div class=\"text-white\">Granular Access Control</div></li><li class=\"text-indigo-400\"><div class=\"text-white\">Session Recording and Monitoring</div></li><li class=\"text-indigo-400\"><div class=\"text-white\">Password Vaulting and Rotation</div></li><li class=\"text-indigo-400\"><div class=\"text-white\">Multi-Factor Authentication (MFA)</div></li><li class=\"text-indigo-400\"><div class=\"text-white\">Audit and Reporting Capabilities</div></li></ul></div><div class=\"h-full flex flex-row items-center p-4 w-3/5\"><iframe width=\"80%\" height=\"83.333333%\" src=\"https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div></div><div class=\"w-full h-96 flex flex-row\"><div class=\"h-full w-2/5 p-4 flex flex-col justify-center \"><div><span class=\"text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text\">Compliance</span></div><p class=\"pr-4 pt-4 text-lg text-white\">Our PAM Solution ensures your operations remain in full compliance with:</p><ul class=\"list-disc px-4 pb-4 text-white text-lg\"><li class=\"text-indigo-400\"><div class=\"text-white\">GDPR</div></li><li class=\"text-indigo-400\"><div class=\"text-white\">PCI DSS</div></li></ul></div><div class=\"h-full flex flex-row-reverse items-center p-4 w-3/5\"><iframe width=\"80%\" height=\"83.333333%\" src=\"https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div></div>")
@@ -444,9 +403,9 @@ func GuideContent() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var17 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var17 == nil {
-			templ_7745c5c3_Var17 = templ.NopComponent
+		templ_7745c5c3_Var16 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var16 == nil {
+			templ_7745c5c3_Var16 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"onboarding\" class=\"w-full h-96 flex flex-row\"><div class=\"h-full w-2/5 p-4 flex flex-col justify-center\"><div><span class=\"text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text\">Onboarding</span></div><p class=\"pr-4 pt-4 text-lg text-white\">This 15 minutes onboarding video will guide you through:</p><ul class=\"list-disc px-4 pb-4 text-white text-lg\"><li class=\"text-indigo-400\"><div class=\"text-white\">How to purchase and receive our product.</div></li><li class=\"text-indigo-400\"><div class=\"text-white\">How to setup our product on your server.</div></li></ul></div><div class=\"h-full flex flex-row-reverse items-center p-4 w-3/5\"><iframe width=\"80%\" height=\"83.333333%\" src=\"https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div></div><div id=\"demo\" class=\"w-full h-96 flex flex-row-reverse\"><div class=\"h-full w-2/5 p-4 flex flex-col justify-center \"><div><span class=\"text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text\">Demo</span></div><p class=\"pr-4 pt-4 text-lg text-white\">This 15 minutes demo video will guide you through:</p><ul class=\"list-disc px-4 pb-4 text-white text-lg\"><li class=\"text-indigo-400\"><div class=\"text-white\">How to use our product.</div></li><li class=\"text-indigo-400\"><div class=\"text-white\">How to configure of our product for additional requirements such as high availability and disaster recovery.</div></li></ul></div><div class=\"h-full flex flex-row items-center p-4 w-3/5\"><iframe width=\"80%\" height=\"83.333333%\" src=\"https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div></div>")
@@ -473,9 +432,9 @@ func LicenseContent() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var18 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var18 == nil {
-			templ_7745c5c3_Var18 = templ.NopComponent
+		templ_7745c5c3_Var17 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var17 == nil {
+			templ_7745c5c3_Var17 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"p-4\"><div class=\"mt-0 mb-8\"><span class=\"text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text\">License Agreement</span></div><p class=\"text-white my-4\">Copyright © 2024, JP.</p><p class=\"text-white my-4\">Permission is hereby granted to any person purchasing or receiving a copy of a JP product (PAM Solution), its source code and associated documentation files (the “Software”), to install and use a single instance and modify a single version of the Software as provided. This does not include the rights to publish, distribute, sublicense, and/or sell copies of the Software, source code or products derived from it.</p><p class=\"text-white my-4\">THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p><p class=\"text-white my-4\">The user of the software represents and warrants that they will at all times comply with applicable law in their download and use of the Software.</p></div>")
@@ -502,9 +461,9 @@ func AboutContent() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var19 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var19 == nil {
-			templ_7745c5c3_Var19 = templ.NopComponent
+		templ_7745c5c3_Var18 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var18 == nil {
+			templ_7745c5c3_Var18 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"w-full h-96 flex flex-row\"><div class=\"h-full w-2/5 p-4 flex flex-col justify-center \"><div><span class=\"p-4 text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text\">Who Are We</span></div><p class=\"p-4 text-lg text-white\">We are an innovative startup founded in 2024, driven by a passion to solve critical challenges in the cybersecurity landscape. Our founder, Paul, brings over 20 years of experience in the cybersecurity industry and has launched this venture to address the issues he has encountered throughout his career. We operate remotely from Petaling Jaya, Selangor and plan to further expand our presence throughout Malaysia.</p></div><div class=\"h-full flex flex-row-reverse items-center p-4 w-3/5\"><iframe width=\"80%\" height=\"83.333333%\" src=\"https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div></div><div id=\"aim\" class=\"w-full h-96 flex flex-row-reverse\"><div class=\"h-full w-2/5 p-4 flex flex-col justify-center \"><div><span class=\"p-4 text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text\">Our Aim</span></div><div class=\"p-4 text-lg text-white\">Our mission is to offer a straightforward solution to address the critical challenges within the cybersecurity landscape. Our Privileged Access Management (PAM) solution is designed to help customers efficiently manage password rotations across servers at scale. We believe in empowering users with full ownership of the software they purchase, allowing them the freedom to update and modify it according to their needs and preferences.</div></div><div class=\"h-full flex flex-row items-center p-4 w-3/5\"><iframe width=\"80%\" height=\"83.333333%\" src=\"https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div></div>")
@@ -531,9 +490,9 @@ func HomeContent() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var20 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var20 == nil {
-			templ_7745c5c3_Var20 = templ.NopComponent
+		templ_7745c5c3_Var19 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var19 == nil {
+			templ_7745c5c3_Var19 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"w-full h-96 flex flex-row\"><div class=\"h-full w-2/5 p-4 flex flex-col justify-center space-y-4 \"><div><span class=\"text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text\">PAM Solution</span></div><div class=\"flex flex-row space-x-6\"><form action=\"/checkout\" method=\"POST\"><button class=\"rounded-lg p-3 text-sm font-medium text-white bg-gradient-to-tr from-indigo-400 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 focus:outline-none focus:from-indigo-400 focus:to-indigo-500\" type=\"submit\">Buy now</button></form><span class=\"content-end font-medium text-xl bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text hover:from-indigo-300 hover:to-indigo-400 hover:cursor-pointer\" hx-get=\"product\" hx-target=\"#content\" hx-on::after-request=\"window.scrollTo({ top: 0, behavior: &#39;smooth&#39; });\">Explore...</span></div></div><div class=\"h-full flex flex-row-reverse items-center p-4 w-3/5\"><iframe width=\"80%\" height=\"83.333333%\" src=\"https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div></div><div class=\"w-full h-96 flex flex-row-reverse\"><div class=\"h-full w-2/5 p-4 flex flex-col justify-center\"><div><span class=\"text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text\">Why Choose Us</span></div><ul class=\"list-disc p-4 text-white text-lg\"><li class=\"text-indigo-400\"><div class=\"text-white\">Our solution is easy to onboard and easy to setup by watching a 15 minutes onboarding video.</div></li><li class=\"text-indigo-400\"><div class=\"text-white\">Pay once for the software without any additional subscription fees.</div></li></ul></div><div class=\"h-full flex flex-row items-center p-4 w-3/5\"><iframe width=\"80%\" height=\"83.333333%\" src=\"https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div></div>")
@@ -560,12 +519,12 @@ func Footer() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var21 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var21 == nil {
-			templ_7745c5c3_Var21 = templ.NopComponent
+		templ_7745c5c3_Var20 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var20 == nil {
+			templ_7745c5c3_Var20 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<footer><div class=\"w-full p-4\"><hr class=\"my-6 border-slate-600\"><div class=\"w-full mb-9\"><img src=\"/img/icon.png\" class=\"h-8\" alt=\"JP\"></div><div class=\"flex justify-start space-x-36\"><div><p class=\"mb-4 text-sm font-semibold text-white\">Support</p><ul class=\"text-gray-400 text-sm\"><li class=\"mb-3 hover:text-gray-300 hover:cursor-pointer\" hx-get=\"guide\" hx-target=\"#content\" hx-on::after-request=\"document.getElementById(&#39;onboarding&#39;).scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;end&#39; })\">Onboarding</li><li class=\"mb-3 hover:text-gray-300 hover:cursor-pointer\" hx-get=\"guide\" hx-target=\"#content\" hx-on::after-request=\"document.getElementById(&#39;demo&#39;).scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;end&#39; })\">Demo</li></ul></div><div id=\"contact\"><p class=\"mb-4 text-sm font-semibold text-white\">Contact Us</p><ul class=\"text-gray-400 text-sm\"><li class=\"mb-3\">Email: suport@JP.com</li><li class=\"mb-3\">Tel: +603-1234567</li></ul></div><div><p class=\"mb-4 text-sm font-semibold text-white\">Legal</p><ul class=\"text-gray-400 text-sm\"><li class=\"mb-3 hover:text-gray-300 hover:cursor-pointer\" hx-get=\"license\" hx-target=\"#content\" hx-on::after-request=\"document.getElementById(&#39;content&#39;).scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;end&#39; })\">License</li></ul></div></div><hr class=\"my-6 border-slate-600\"><p class=\"text-sm text-gray-400\">© 2024 JP. All Rights Reserved. Anyone buying, using, or receiving a JP product is subject to our <span class=\"text-white hover:underline hover:cursor-pointer\" hx-get=\"license\" hx-target=\"#content\" hx-on::after-request=\"document.getElementById(&#39;content&#39;).scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;end&#39; })\">software license agreement</span>.</p></div></footer>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<footer><div class=\"w-full p-4\"><hr class=\"my-6 border-slate-600\"><div class=\"w-full mb-9\"><img class=\"h-8 hover:cursor-pointer\" src=\"/img/icon.png\" alt=\"JP\" onclick=\"window.location.href=&#39;/&#39;\"></div><div class=\"flex justify-start space-x-36\"><div><p class=\"mb-4 text-sm font-semibold text-white\">Support</p><ul class=\"text-gray-400 text-sm\"><li class=\"mb-3 hover:text-gray-300 hover:cursor-pointer\" hx-get=\"guide\" hx-target=\"#content\" hx-on::after-request=\"document.getElementById(&#39;onboarding&#39;).scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;end&#39; })\">Onboarding</li><li class=\"mb-3 hover:text-gray-300 hover:cursor-pointer\" hx-get=\"guide\" hx-target=\"#content\" hx-on::after-request=\"document.getElementById(&#39;demo&#39;).scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;end&#39; })\">Demo</li></ul></div><div id=\"contact\"><p class=\"mb-4 text-sm font-semibold text-white\">Contact Us</p><ul class=\"text-gray-400 text-sm\"><li class=\"mb-3\">Email: suport@JP.com</li><li class=\"mb-3\">Tel: +603-1234567</li></ul></div><div><p class=\"mb-4 text-sm font-semibold text-white\">Legal</p><ul class=\"text-gray-400 text-sm\"><li class=\"mb-3 hover:text-gray-300 hover:cursor-pointer\" hx-get=\"license\" hx-target=\"#content\" hx-on::after-request=\"document.getElementById(&#39;content&#39;).scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;end&#39; })\">License</li></ul></div></div><hr class=\"my-6 border-slate-600\"><p class=\"text-sm text-gray-400\">© 2024 JP. All Rights Reserved. Anyone buying, using, or receiving a JP product is subject to our <span class=\"text-white hover:underline hover:cursor-pointer\" hx-get=\"license\" hx-target=\"#content\" hx-on::after-request=\"document.getElementById(&#39;content&#39;).scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;end&#39; })\">software license agreement</span>.</p></div></footer>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -589,12 +548,49 @@ func NavigationBar() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var21 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var21 == nil {
+			templ_7745c5c3_Var21 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<nav class=\"bg-slate-800 sticky top-0\"><div class=\"flex mx-3 ml-6 h-16 items-center justify-start space-x-4\"><img class=\"h-8 hover:cursor-pointer\" src=\"/img/icon.png\" alt=\"JP\" onclick=\"window.location.href=&#39;/&#39;\"> <button id=\"home-nav\" class=\"rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600\" hx-get=\"home\" hx-target=\"#content\" hx-on::after-request=\"window.scrollTo({ top: 0, behavior: &#39;smooth&#39; }); document.getElementById(&#39;home-nav&#39;).blur();\">Home</button> <button id=\"product-nav\" class=\"rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600\" hx-get=\"product\" hx-target=\"#content\" hx-on::after-request=\"window.scrollTo({ top: 0, behavior: &#39;smooth&#39; }); document.getElementById(&#39;product-nav&#39;).blur();\">Product</button> <button id=\"guide-nav\" class=\"rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600\" hx-get=\"guide\" hx-target=\"#content\" hx-on::after-request=\"window.scrollTo({ top: 0, behavior: &#39;smooth&#39; }); document.getElementById(&#39;guide-nav&#39;).blur();\">Guides</button> <button id=\"about-nav\" class=\"rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600\" hx-get=\"about\" hx-target=\"#content\" hx-on::after-request=\"window.scrollTo({ top: 0, behavior: &#39;smooth&#39; }); document.getElementById(&#39;about-nav&#39;).blur();\">About us</button> <button id=\"contact-nav\" class=\"rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600\" onclick=\"document.getElementById(&#39;contact&#39;).scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;start&#39; }); document.getElementById(&#39;contact-nav&#39;).blur();\">Contacts</button></div></nav>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func LandingBase() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
 		templ_7745c5c3_Var22 := templ.GetChildren(ctx)
 		if templ_7745c5c3_Var22 == nil {
 			templ_7745c5c3_Var22 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<nav class=\"bg-slate-800 sticky top-0\"><div class=\"flex mx-3 ml-6 h-16 items-center justify-start space-x-4\"><img src=\"/img/icon.png\" class=\"h-8\" alt=\"JP\"> <button id=\"home-nav\" class=\"rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600\" hx-get=\"home\" hx-target=\"#content\" hx-on::after-request=\"window.scrollTo({ top: 0, behavior: &#39;smooth&#39; }); document.getElementById(&#39;home-nav&#39;).blur();\">Home</button> <button id=\"product-nav\" class=\"rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600\" hx-get=\"product\" hx-target=\"#content\" hx-on::after-request=\"window.scrollTo({ top: 0, behavior: &#39;smooth&#39; }); document.getElementById(&#39;product-nav&#39;).blur();\">Product</button> <button id=\"guide-nav\" class=\"rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600\" hx-get=\"guide\" hx-target=\"#content\" hx-on::after-request=\"window.scrollTo({ top: 0, behavior: &#39;smooth&#39; }); document.getElementById(&#39;guide-nav&#39;).blur();\">Guides</button> <button id=\"about-nav\" class=\"rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600\" hx-get=\"about\" hx-target=\"#content\" hx-on::after-request=\"window.scrollTo({ top: 0, behavior: &#39;smooth&#39; }); document.getElementById(&#39;about-nav&#39;).blur();\">About us</button> <button id=\"contact-nav\" class=\"rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600\" onclick=\"document.getElementById(&#39;contact&#39;).scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;start&#39; }); document.getElementById(&#39;contact-nav&#39;).blur();\">Contacts</button></div></nav>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"w-full h-screen flex flex-col\"><nav class=\"bg-slate-800 sticky top-0\"><div class=\"flex mx-3 ml-6 h-16 items-center justify-start space-x-4\"><img class=\"h-8 hover:cursor-pointer\" src=\"/img/icon.png\" alt=\"JP\" onclick=\"window.location.href=&#39;/&#39;\"></div></nav>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templ_7745c5c3_Var22.Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -1,4 +1,4 @@
-module web
+module github.com/Jason0w0/web/web
 
 go 1.23.0
 
