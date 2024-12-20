@@ -1,0 +1,4 @@
+[build]
+  cmd = "templ fmt . && templ generate . && go build -o ./tmp/main.exe ."
+  bin = "tmp/main.exe"
+  include_ext = ["go", "templ", "css", "js", "png"]

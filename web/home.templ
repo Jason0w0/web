@@ -1,0 +1,538 @@
+package main
+
+import "fmt"
+
+templ HomePage() {
+	@Base() {
+		@NavigationBar()
+		<div class="px-3 bg-gradient-to-t from-slate-700 to-slate-800">
+			<div id="content">
+				@HomeContent()
+			</div>
+			@Footer()
+		</div>
+	}
+}
+
+templ LandingPage(email string, session string) {
+	@Base() {
+		@LandingBase() {
+			@LandingContent(email, session)
+		}
+	}
+}
+
+templ DonePage() {
+	@Base() {
+		@LandingBase() {
+			@Done()
+		}
+	}
+}
+
+templ OnboardPage() {
+	@Base() {
+		@NavigationBar()
+		<div class="px-3 bg-gradient-to-t from-slate-700 to-slate-800">
+			<div id="content">
+				@GuideContent()
+			</div>
+			@Footer()
+		</div>
+	}
+}
+
+templ Done() {
+	<div class="flex items-center justify-center bg-gradient-to-t from-slate-700 to-slate-800 w-full h-full">
+		<div class="flex flex-col items-center space-y-4 w-1/2 shadow-2xl rounded-lg p-6 bg-gradient-to-tr from-indigo-400 to-indigo-500">
+			<div>
+				<h2 class="text-4xl font-bold text-center text-white">Thank You!</h2>
+				<p class="mt-3 text-center text-white">
+					Your order has been sent to your email.
+					You will be redirected to hour home page shortly. 
+					Please press the button if you are not redirected.
+				</p>
+			</div>
+			<button
+				class="w-1/3 px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-700"
+				onclick="window.location.href='/'"
+			>
+				Home
+			</button>
+		</div>
+	</div>
+	<script>
+		setTimeout(() => {
+  			window.location.href="/";
+		}, 10000);
+	</script>
+}
+
+templ LandingContent(email string, session string) {
+	<div class="flex items-center justify-center bg-gradient-to-t from-slate-700 to-slate-800 w-full h-full">
+		<div class="flex flex-col space-y-4 w-1/3 shadow-2xl rounded-lg p-6 bg-gradient-to-tr from-indigo-400 to-indigo-500">
+			<div>
+				<h2 class="text-4xl font-bold text-center text-white">Thank You!</h2>
+				<p class="mt-3 text-center text-white">Your order will be send to the email below.</p>
+			</div>
+			<div>
+				<p class="text-sm text-white">Product</p>
+				<p class="w-full px-4 py-2 mt-2 text-gray-700 bg-gray-300 font-bold border-2 border-transparent rounded-md focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-500">
+					PAM Solution
+				</p>
+			</div>
+			<div>
+				<p class="text-sm text-white">Email</p>
+				<input
+					type="email"
+					name="email"
+					value={ email }
+					class="w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 border-2 border-transparent rounded-md cursor-pointer focus:cursor-text focus:border-indigo-400 focus:outline-none"
+				/>
+			</div>
+			<div>
+				<button
+					class="w-full px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-700"
+					hx-post="/deliver"
+					hx-vals={ fmt.Sprintf(`{"session": "%v"}`, session) }
+					hx-include="[name='email']"
+					hx-target="body"
+				>
+					Confirm
+				</button>
+			</div>
+		</div>
+	</div>
+}
+
+templ LandingBase() {
+	<div
+		class="w-full h-screen flex flex-col"
+	>
+		@NavigationBar()
+		{ children... }
+	</div>
+}
+
+templ ProductContent() {
+	<div
+		id="product"
+		class="w-full h-96 flex flex-row"
+	>
+		<div class="h-full w-2/5 p-4 flex flex-col justify-center">
+			<div>
+				<span class="text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text">
+					PAM Solution
+				</span>
+			</div>
+			<p class="pr-4 pt-4 text-lg text-white">
+				PAM Solution is a PAM Solution that helps businesses gain full control over privileged accounts, enforce the principle of least privilege and zero trust model, ensuring that sensitive data and systems are protected while maintaining compliance with relevant security regulations.
+			</p>
+		</div>
+		<div class="h-full flex flex-row-reverse items-center p-4 w-3/5">
+			<iframe width="80%" height="83.333333%" src="https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+	</div>
+	<div class="w-full h-96 flex flex-row-reverse">
+		<div class="h-full w-2/5 p-4 flex flex-col justify-center ">
+			<div>
+				<span class="text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text">
+					Features
+				</span>
+			</div>
+			<ul class="list-disc p-4 text-white text-lg">
+				<li class="text-indigo-400">
+					<div class="text-white">
+						Granular Access Control
+					</div>
+				</li>
+				<li class="text-indigo-400">
+					<div class="text-white">
+						Session Recording and Monitoring
+					</div>
+				</li>
+				<li class="text-indigo-400">
+					<div class="text-white">
+						Password Vaulting and Rotation
+					</div>
+				</li>
+				<li class="text-indigo-400">
+					<div class="text-white">
+						Multi-Factor Authentication (MFA)
+					</div>
+				</li>
+				<li class="text-indigo-400">
+					<div class="text-white">
+						Audit and Reporting Capabilities
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="h-full flex flex-row items-center p-4 w-3/5">
+			<iframe width="80%" height="83.333333%" src="https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+	</div>
+	<div class="w-full h-96 flex flex-row">
+		<div class="h-full w-2/5 p-4 flex flex-col justify-center ">
+			<div>
+				<span class="text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text">
+					Compliance
+				</span>
+			</div>
+			<p class="pr-4 pt-4 text-lg text-white">
+				Our PAM Solution ensures your operations remain in full compliance with:
+			</p>
+			<ul class="list-disc px-4 pb-4 text-white text-lg">
+				<li class="text-indigo-400">
+					<div class="text-white">
+						GDPR
+					</div>
+				</li>
+				<li class="text-indigo-400">
+					<div class="text-white">
+						PCI DSS
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="h-full flex flex-row-reverse items-center p-4 w-3/5">
+			<iframe width="80%" height="83.333333%" src="https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+	</div>
+}
+
+templ GuideContent() {
+	<div
+		id="onboarding"
+		class="w-full h-96 flex flex-row"
+	>
+		<div class="h-full w-2/5 p-4 flex flex-col justify-center">
+			<div>
+				<span class="text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text">
+					Onboarding
+				</span>
+			</div>
+			<p class="pr-4 pt-4 text-lg text-white">
+				This 15 minutes onboarding video will guide you through:
+			</p>
+			<ul class="list-disc px-4 pb-4 text-white text-lg">
+				<li class="text-indigo-400">
+					<div class="text-white">
+						How to purchase and receive our product.
+					</div>
+				</li>
+				<li class="text-indigo-400">
+					<div class="text-white">
+						How to setup our product on your server.
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="h-full flex flex-row-reverse items-center p-4 w-3/5">
+			<iframe width="80%" height="83.333333%" src="https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+	</div>
+	<div
+		id="demo"
+		class="w-full h-96 flex flex-row-reverse"
+	>
+		<div class="h-full w-2/5 p-4 flex flex-col justify-center ">
+			<div>
+				<span class="text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text">
+					Demo
+				</span>
+			</div>
+			<p class="pr-4 pt-4 text-lg text-white">
+				This 15 minutes demo video will guide you through:
+			</p>
+			<ul class="list-disc px-4 pb-4 text-white text-lg">
+				<li class="text-indigo-400">
+					<div class="text-white">
+						How to use our product.
+					</div>
+				</li>
+				<li class="text-indigo-400">
+					<div class="text-white">
+						How to configure of our product for additional requirements such as high availability and disaster recovery.
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="h-full flex flex-row items-center p-4 w-3/5">
+			<iframe width="80%" height="83.333333%" src="https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+	</div>
+}
+
+templ LicenseContent() {
+	<div
+		class="p-4"
+	>
+		<div class="mt-0 mb-8">
+			<span class="text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text">
+				License Agreement
+			</span>
+		</div>
+		<p class="text-white my-4">
+			Copyright © 2024, JP.
+		</p>
+		<p class="text-white my-4">
+			Permission is hereby granted to any person purchasing or receiving a copy of a JP product (PAM Solution), its source code and associated documentation files (the “Software”), to install and use a single instance and modify a single version of the Software as provided.
+			This does not include the rights to publish, distribute, sublicense, and/or sell copies of the Software, source code or products derived from it.
+		</p>
+		<p class="text-white my-4">
+			THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+			IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		</p>
+		<p class="text-white my-4">
+			The user of the software represents and warrants that they will at all times comply with applicable law in their download and use of the Software.
+		</p>
+	</div>
+}
+
+templ AboutContent() {
+	<div
+		class="w-full h-96 flex flex-row"
+	>
+		<div class="h-full w-2/5 p-4 flex flex-col justify-center ">
+			<div>
+				<span class="p-4 text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text">
+					Who Are We
+				</span>
+			</div>
+			<p class="p-4 text-lg text-white">
+				We are an innovative startup founded in 2024, driven by a passion to solve critical challenges in the cybersecurity landscape.
+				Our founder, Paul, brings over 20 years of experience in the cybersecurity industry and has launched this venture to address the issues he has encountered throughout his career.
+				We operate remotely from Petaling Jaya, Selangor and plan to further expand our presence throughout Malaysia.
+			</p>
+		</div>
+		<div class="h-full flex flex-row-reverse items-center p-4 w-3/5">
+			<iframe width="80%" height="83.333333%" src="https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+	</div>
+	<div
+		id="aim"
+		class="w-full h-96 flex flex-row-reverse"
+	>
+		<div class="h-full w-2/5 p-4 flex flex-col justify-center ">
+			<div>
+				<span class="p-4 text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text">
+					Our Aim
+				</span>
+			</div>
+			<div class="p-4 text-lg text-white">
+				Our mission is to offer a straightforward solution to address the critical challenges within the cybersecurity landscape.
+				Our Privileged Access Management (PAM) solution is designed to help customers efficiently manage password rotations across servers at scale.
+				We believe in empowering users with full ownership of the software they purchase, allowing them the freedom to update and modify it according to their needs and preferences.
+			</div>
+		</div>
+		<div class="h-full flex flex-row items-center p-4 w-3/5">
+			<iframe width="80%" height="83.333333%" src="https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+	</div>
+}
+
+templ HomeContent() {
+	<div class="w-full h-96 flex flex-row">
+		<div class="h-full w-2/5 p-4 flex flex-col justify-center space-y-4 ">
+			<div>
+				<span class="text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text">
+					PAM Solution
+				</span>
+			</div>
+			<div class="flex flex-row space-x-6">
+				<form action="/checkout" method="POST">
+					<button
+						class="rounded-lg p-3 text-sm font-medium text-white bg-gradient-to-tr from-indigo-400 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 focus:outline-none focus:from-indigo-400 focus:to-indigo-500"
+						type="submit"
+					>
+						Buy now
+					</button>
+				</form>
+				<span
+					class="content-end font-medium text-xl bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text hover:from-indigo-300 hover:to-indigo-400 hover:cursor-pointer"
+					hx-get="product"
+					hx-target="#content"
+					hx-on::after-request="window.scrollTo({ top: 0, behavior: 'smooth' });"
+				>
+					Explore...
+				</span>
+			</div>
+		</div>
+		<div class="h-full flex flex-row-reverse items-center p-4 w-3/5">
+			<iframe width="80%" height="83.333333%" src="https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+	</div>
+	<div class="w-full h-96 flex flex-row-reverse">
+		<div class="h-full w-2/5 p-4 flex flex-col justify-center">
+			<div>
+				<span class="text-4xl font-bold bg-gradient-to-t from-indigo-400 to-indigo-600 text-transparent bg-clip-text">
+					Why Choose Us
+				</span>
+			</div>
+			<ul class="list-disc p-4 text-white text-lg">
+				<li class="text-indigo-400">
+					<div class="text-white">
+						Our solution is easy to onboard and easy to setup by watching a 15 minutes onboarding video.
+					</div>
+				</li>
+				<li class="text-indigo-400">
+					<div class="text-white">
+						Pay once for the software without any additional subscription fees.
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="h-full flex flex-row items-center p-4 w-3/5">
+			<iframe width="80%" height="83.333333%" src="https://www.youtube.com/embed/qeEIfm6FXxg?si=2-T9q7KIM6NqDtRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+	</div>
+}
+
+templ Footer() {
+	<footer>
+		<div class="w-full p-4">
+			<hr class="my-6 border-slate-600"/>
+			<div class="w-full mb-9">
+				<img src="/img/icon.png" class="h-8" alt="JP"/>
+			</div>
+			<div class="flex justify-start space-x-36">
+				<div>
+					<p class="mb-4 text-sm font-semibold text-white">
+						Support
+					</p>
+					<ul class="text-gray-400 text-sm">
+						<li
+							class="mb-3 hover:text-gray-300 hover:cursor-pointer"
+							hx-get="guide"
+							hx-target="#content"
+							hx-on::after-request="document.getElementById('onboarding').scrollIntoView({ behavior: 'smooth', block: 'end' })"
+						>
+							Onboarding
+						</li>
+						<li
+							class="mb-3 hover:text-gray-300 hover:cursor-pointer"
+							hx-get="guide"
+							hx-target="#content"
+							hx-on::after-request="document.getElementById('demo').scrollIntoView({ behavior: 'smooth', block: 'end' })"
+						>
+							Demo
+						</li>
+					</ul>
+				</div>
+				<div id="contact">
+					<p class="mb-4 text-sm font-semibold text-white">
+						Contact Us
+					</p>
+					<ul class="text-gray-400 text-sm">
+						<li class="mb-3">
+							Email: suport@JP.com
+						</li>
+						<li class="mb-3">
+							Tel: +603-1234567
+						</li>
+					</ul>
+				</div>
+				<div>
+					<p class="mb-4 text-sm font-semibold text-white">
+						Legal
+					</p>
+					<ul class="text-gray-400 text-sm">
+						<li
+							class="mb-3 hover:text-gray-300 hover:cursor-pointer"
+							hx-get="license"
+							hx-target="#content"
+							hx-on::after-request="document.getElementById('content').scrollIntoView({ behavior: 'smooth', block: 'end' })"
+						>
+							License
+						</li>
+					</ul>
+				</div>
+			</div>
+			<hr class="my-6 border-slate-600"/>
+			<p class="text-sm text-gray-400">
+				© 2024 JP.
+				All Rights Reserved.
+				Anyone buying, using, or receiving a JP product is subject to our
+				<span
+					class="text-white hover:underline hover:cursor-pointer"
+					hx-get="license"
+					hx-target="#content"
+					hx-on::after-request="document.getElementById('content').scrollIntoView({ behavior: 'smooth', block: 'end' })"
+				>
+					software license agreement
+				</span>.
+			</p>
+		</div>
+	</footer>
+}
+
+templ NavigationBar() {
+	<nav class="bg-slate-800 sticky top-0">
+		<div class="flex mx-3 ml-6 h-16 items-center justify-start space-x-4">
+			<img src="/img/icon.png" class="h-8" alt="JP"/>
+			<button
+				id="home-nav"
+				class="rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600"
+				hx-get="home"
+				hx-target="#content"
+				hx-on::after-request="window.scrollTo({ top: 0, behavior: 'smooth' }); document.getElementById('home-nav').blur();"
+			>
+				Home
+			</button>
+			<button
+				id="product-nav"
+				class="rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600"
+				hx-get="product"
+				hx-target="#content"
+				hx-on::after-request="window.scrollTo({ top: 0, behavior: 'smooth' }); document.getElementById('product-nav').blur();"
+			>
+				Product
+			</button>
+			<button
+				id="guide-nav"
+				class="rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600"
+				hx-get="guide"
+				hx-target="#content"
+				hx-on::after-request="window.scrollTo({ top: 0, behavior: 'smooth' }); document.getElementById('guide-nav').blur();"
+			>
+				Guides
+			</button>
+			<button
+				id="about-nav"
+				class="rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600"
+				hx-get="about"
+				hx-target="#content"
+				hx-on::after-request="window.scrollTo({ top: 0, behavior: 'smooth' }); document.getElementById('about-nav').blur();"
+			>
+				About us
+			</button>
+			<button
+				id="contact-nav"
+				class="rounded-lg p-3 text-sm font-medium text-white hover:bg-slate-600 focus:outline-none focus:bg-slate-600"
+				onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' }); document.getElementById('contact-nav').blur();"
+			>
+				Contacts
+			</button>
+		</div>
+	</nav>
+}
+
+templ Base() {
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link rel="icon" href="/img/icon.png">
+			<link href="/css/tailwind.css" rel="stylesheet"/>
+			<link href="/css/base.css" rel="stylesheet"/>
+			<script src="/js/htmx.min.js"></script>
+			<title>JP</title>
+		</head>
+		<body>
+			{ children... }
+			<script>window.onbeforeunload = function() {window.scrollTo(0,0);};</script>
+		</body>
+	</html>
+}

@@ -1,0 +1,30 @@
+---
+services:
+  traefik:
+    image: traefik:v3.2
+    container_name: traefik-v3.2
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik/traefik.yaml:/etc/traefik/traefik.yaml:ro
+    networks:
+      - web
+    restart: unless-stopped
+  web:
+    image: webapp:latest
+    container_name: webapp
+    volumes:
+      - ./web/test.db:/app/test.db
+    networks:
+      - web
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.webapp-http.rule=Host(`webapp.jp.com`)
+      - traefik.http.routers.webapp-http.entrypoints=web
+    restart: unless-stopped
+networks:
+  web:
+    external: true

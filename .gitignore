@@ -1,0 +1,12 @@
+# build file
+*.exe*
+*.log
+
+# scripts
+*.cmd
+
+# credentials
+.env
+*.db
+
+*/static/img/*
